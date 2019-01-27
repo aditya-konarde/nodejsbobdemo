@@ -16,15 +16,13 @@ osio {
 
   cd {
 
-    def resources = processTemplate(params: [
-          release_version: "1.0.${env.BUILD_NUMBER}"
-    ])
-
-    build resources: resources
-
-    deploy resources: resources, env: 'stage'
-
-    deploy resources: resources, env: 'run', approval: 'manual'
+    stage("Other OpenShift Cluster") {
+        openshift.withCluster('oc login https://api.starter-us-east-2.openshift.com', '2-0LH6vHl_YFjrnJaDVpmTWQ3vSZ_XDu3Un1R-RqNg4' ) {
+            openshift.withProject( 'hshinde' ) {
+                echo "Hello from project ${openshift.project()} in cluster ${openshift.cluster()}"
+            }
+        }
+    }
 
   }
 }
