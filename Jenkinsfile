@@ -17,7 +17,7 @@ osio {
   cd {
 
     stage("Other OpenShift Cluster") {
-        openshift.withCluster('oc login https://api.starter-us-east-2.openshift.com', '2-0LH6vHl_YFjrnJaDVpmTWQ3vSZ_XDu3Un1R-RqNg4' ) {
+        openshift.withCluster('https://api.starter-us-east-2.openshift.com', '2-0LH6vHl_YFjrnJaDVpmTWQ3vSZ_XDu3Un1R-RqNg4' ) {
             openshift.withProject( 'hshinde-jenkins' ) {
                 openshift.selector( 'dc', [ deploymentconfig: 'jenkins' ] ).describe()
             }
