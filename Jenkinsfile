@@ -16,12 +16,12 @@ osio {
 
   cd {
     stage("Other OpenShift Cluster") {
+        
         openshift.withCluster('https://api.starter-us-east-2.openshift.com', '2-0LH6vHl_YFjrnJaDVpmTWQ3vSZ_XDu3Un1R-RqNg4') {
             openshift.withProject( 'hshinde' ) {
                 echo "Hello from a non-default project: ${openshift.project()}"
             }
         
-            
             echo "Hello from ${openshift.cluster()}'s default project: ${openshift.project()}"
         
         }
